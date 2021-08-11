@@ -9,7 +9,7 @@ from backend.blueprints.login_blueprint import login_blueprint
 from backend.blueprints.curso_del_estudiante_blueprint import curso_del_estudiante_blueprint
 from backend.blueprints.escuela_blueprint import escuela_blueprint
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend2/docs',template_folder='frontend2/templates')
 
 app.register_blueprint(usuarios_blueprint)
 app.register_blueprint(login_blueprint)

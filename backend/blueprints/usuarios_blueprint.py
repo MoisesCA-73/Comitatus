@@ -2,6 +2,7 @@ from flask import Flask
 from flask import Blueprint
 from flask import request
 from flask import jsonify
+from flask.templating import render_template
 
 from flask_cors import CORS, cross_origin # para que no genere errores de CORS al hacer peticiones
 
@@ -10,6 +11,10 @@ from backend.models.usuarios_model import UsuariosModel
 usuarios_blueprint = Blueprint('usuarios_blueprint', __name__)
 
 model = UsuariosModel()
+
+@usuarios_blueprint.route('/usuarios/<name>')
+def Menu(name=None):
+    return render_template("menu.html",name=name)
 
 @usuarios_blueprint.route('/usuarios/create_usuarios', methods=['POST'])
 @cross_origin()
