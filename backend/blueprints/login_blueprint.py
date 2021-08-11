@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template,url_for
 from flask import Blueprint
 from flask import request
 from flask import jsonify
@@ -18,11 +18,11 @@ model = LoginModel()
 def Index():
     return render_template('login.html')
 
-@login_blueprint.route('/login/create_usuario', methods=['POST'])
+@login_blueprint.route('/login/create_usuario', methods=['POST'])#Verificar si se encuentra en la base de datos
 @cross_origin()
 def create_usuario():
-    content = model.create_usuario(int(request.json['cui']), request.json['contrasenia'])    
-    return jsonify(content)
+    content = model.create_usuario(int(request.form['cui']), request.form['contrasenia'])    
+    return content
 
 @login_blueprint.route('/login/delete_usuario', methods=['POST'])
 @cross_origin()

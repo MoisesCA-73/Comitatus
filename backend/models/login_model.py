@@ -1,3 +1,4 @@
+from flask.templating import render_template
 from backend.models.connection_pool import MySQLPool
 
 class LoginModel:
@@ -26,16 +27,13 @@ class LoginModel:
         return data
 
     def create_usuario(self, cui, contrasenia): #crear usuario a traves de json    
-        params = {
-            'cui' : cui,
-            'contrasenia' : contrasenia
-        }  
-        query = """insert into login(cui, contrasenia) 
+        
+        query ="""insert into login(cui, contrasenia) 
             values (%(cui)s, %(contrasenia)s)"""    
-        cursor = self.mysql_pool.execute(query, params, commit=True)   
+        cursor = self.mysql_pool.execute('INSERT INTO login (cui, contrasenia) VALUES (%s ,%s)',(cui,contrasenia), commit=True)   
 
         data = {'cui': cui, 'contrasenia': contrasenia}
-        return data
+        return render_template('singup.html')
 
     def delete_usuario(self, cui):#borra usuario de la base de datos  
         params = {'cui' : cui}      
