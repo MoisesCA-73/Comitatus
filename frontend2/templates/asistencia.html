@@ -1,63 +1,85 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset= "UTF-8">
-    </head>
+<head>
+<link rel="stylesheet" href= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+        
+    <script src= 
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+    </script> 
+        
+    <script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"> 
+    </script> 
+        
+    <script src= 
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
+    </script> 
+      
     <style type="text/css">
-        #container{
-            margin: 50px 350px ;
-            width: 800px;
+        h1 {
+            color:green;
         }
-        th{
-            background-color: rgb(238, 40, 99);
+        .xyz {
+            background-size: auto;
+            text-align: center;
+            padding-top: 100px;
         }
-        h1{
+        .btn-circle.btn-sm {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            font-size: 8px;
             text-align: center;
         }
-        table, th, td{
-            border: 1px solid black;
-            border-collapse: collapse;
+        .btn-circle.btn-md {
+            width: 50px;
+            height: 50px;
+            padding: 7px 10px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
         }
-        th, td{
-            padding: 10px;
-        }
-        table{
-            background-color: #ee7795;
+        .btn-circle.btn-xl {
+            width: 350px;
+            height: 350px;
+            padding: 10px 16px;
+            border-radius: 300px;
+            font-size: 38px;
+            text-align: center;
         }
     </style>
-    <body>
-        <h1>Usuarios</h1>
-        <div id="container">
-            <table style="width:70%">
-                <tr>
-                    <th>
-                        CUI
-                    </th>
-                    <th>
-                        CONTRASEÑA
-                    </th>
-                </tr>
-                <tr>
-                    <td>20200730</td>
-                    <td>12345</td>
-                </tr>
-                <tr>
-                    <td>20200840</td>
-                    <td>asd159</td>
-                </tr>
-                <tr>
-                    <td>20200145</td>
-                    <td>aaa123</td>
-                </tr>
-                <tr>
-                    <td>20200753</td>
-                    <td>xd753</td>
-                </tr>
-                <tr>
-                    <td>20200852</td>
-                    <td>hh4689</td>
-                </tr>
-            </table>
+</head>
+<link rel="stylesheet" type = "text/css" href = "style1.css">
+<div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>Asistencia de curso en el horario de hh/mm</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form>
+            <div class="circle">
+                <button type="button" class="btn btn-success btn-circle btn-xl">Registrar asistencia usando camara frontal</button> 
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb1">
+                  <label for="cb1">Asistencia inicio</label>
+              </div>
+              <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb2">
+                  <label for="cb2">Asistencia aleatoria 1</label>
+              </div>
+            <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb3">
+                  <label for="cb2">Asistencia aleatoria 2</label>
+              </div>
+            <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb4">
+                  <label for="cb2">Asistencia aleatoria 3</label>
+              </div>
+          </form>
         </div>
-    </body>
-</html> 
+      </div>
+    </div>
+  </div>
