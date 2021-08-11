@@ -11,7 +11,7 @@ from backend.models.usuarios_model import UsuariosModel
 usuarios_blueprint = Blueprint('usuarios_blueprint', __name__)
 
 model = UsuariosModel()
-
+@usuarios_blueprint.route('/usuarios')
 @usuarios_blueprint.route('/usuarios/<name>')
 def Menu(name=None):
     return render_template("menu.html",name=name)

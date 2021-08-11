@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import (Flask,g, render_template, redirect, url_for, request, session)
 from flask import Blueprint
 from flask import request
 from flask import jsonify
@@ -14,8 +14,32 @@ login_blueprint = Blueprint('login_blueprint', __name__,)
 
 model = LoginModel()
 
-@login_blueprint.route('/login')
+class User:
+    def __init__(self,id, cui, password):
+        self.id = id
+        self.cui = cui
+        self.password = password
+    def __repr__(self):
+        return f'<User:  {self.cui}>'
+
+users = []
+users.append(User(id=1, cui='20201234', password='password'))
+users.append(User(id=2, cui='20204321', password='secret'))
+
+print(users)
+@login_blueprint.route('/login', methods=['GET', 'POST'])
 def Index():
+    if request.method == 'POST':
+        session.pop('user_id', None)
+        cui = request.form['uname']
+        password = request.form['psw']
+        
+        user = [x for x in users if x.cui == cui][0]
+        if user and user.password == password:
+            session['user_id'] = user.id
+            return redirect(url_for('usuarios_blueprint.Menu'))
+
+        return redirect(url_for('login_blueprint.Index'))
     return render_template('login.html')
 
 @login_blueprint.route('/login/create_usuario', methods=['POST'])
