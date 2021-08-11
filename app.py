@@ -10,7 +10,7 @@ from backend.blueprints.curso_del_estudiante_blueprint import curso_del_estudian
 from backend.blueprints.escuela_blueprint import escuela_blueprint
 
 app = Flask(__name__,template_folder='frontend2/templates',static_folder='frontend2/static')
-
+app.secret_key= "hola"
 app.register_blueprint(usuarios_blueprint)
 app.register_blueprint(login_blueprint)
 app.register_blueprint(curso_del_estudiante_blueprint)
