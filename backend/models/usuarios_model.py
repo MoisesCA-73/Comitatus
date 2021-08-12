@@ -16,7 +16,7 @@ class UsuariosModel:
         return data
 
     def get_all_usuarios(self):  
-        rv = self.mysql_pool.execute("SELECT * from usuarios")  
+        rv = self.mysql_pool.execute("SELECT * from usuarios order by cui")  
         data = []
         content = {}
         for result in rv:

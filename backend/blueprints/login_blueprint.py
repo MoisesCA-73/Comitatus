@@ -1,3 +1,4 @@
+from backend.models.usuarios_model import UsuariosModel
 from flask import (Flask, render_template,url_for,g,session)
 from flask import Blueprint
 from flask import request
@@ -13,18 +14,38 @@ from backend.models.login_model import LoginModel
 login_blueprint = Blueprint('login_blueprint', __name__,)
 
 model = LoginModel()
+modelUser = UsuariosModel()
 
 class User:
-    def __init__(self,id, cui, contrasenia):
+    def __init__(self,id, cui, contrasenia, nombres, apellidos, escuela, correo, imagen):
         self.id = id
         self.cui = cui
         self.contrasenia = contrasenia
+        self.nombres = nombres
+        self.apellidos = apellidos
+        self.escuela = escuela
+        self.correo = correo
+        self.imagen = imagen
     def __repr__(self):
         return f'<User:  {self.cui}>'
 
 users = []
-users.append(User(id=1, cui='20201234', contrasenia='password'))
-users.append(User(id=2, cui='20204321', contrasenia='secret'))
+list_log = model.get_all_usuario()
+list_user = modelUser.get_all_usuarios()
+
+
+n = 1
+for x, y in zip(list_log,list_user):
+    users.append(User(id=n, cui=x.get('cui'), contrasenia=x.get('contrasenia'),nombres=y.get('nombres'),apellidos=y.get('apellidos'),escuela=y.get('escuela'),correo=y.get('correo'),imagen=y.get('imagen')))
+    n += 1
+
+
+@login_blueprint.before_app_request
+def before_request():
+    g.user = None
+    if 'user_id' in session:
+        user = [x for x in users if x.id == session['user_id']][0]
+        g.user = user
 
 @login_blueprint.route('/login', methods=['GET', 'POST'])
 def Index():

@@ -17,7 +17,7 @@ class LoginModel:
         return data
 
     def get_all_usuario(self): #retorna todos los usuarios que existen en la tabla "login"
-        rv = self.mysql_pool.execute("SELECT * from login")  
+        rv = self.mysql_pool.execute("SELECT * from login order by cui")  
         data = []
         content = {}
         for result in rv:

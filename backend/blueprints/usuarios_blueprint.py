@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for, redirect,g
 from flask import Blueprint
 from flask import request
 from flask import jsonify
@@ -12,9 +12,10 @@ usuarios_blueprint = Blueprint('usuarios_blueprint', __name__)
 
 model = UsuariosModel()
 @usuarios_blueprint.route('/usuarios')
-@usuarios_blueprint.route('/usuarios/<name>')
-def Menu(name=None):
-    return render_template("menu.html",name=name)
+def Menu():
+    if not g.user:
+        return redirect(url_for('login_blueprint.Index'))
+    return render_template("menu.html")
 
 @usuarios_blueprint.route('/usuarios/create_usuarios', methods=['POST'])
 @cross_origin()
