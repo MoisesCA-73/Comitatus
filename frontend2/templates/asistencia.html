@@ -13,6 +13,20 @@
       <script src= 
   "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"> 
       </script> 
+
+      <script>
+        function myFunction() {
+          navigator.mediaDevices.getUserMedia({video: true}).then((stream)=>{
+          console.log(stream)
+          let video = document.getElementById('video')
+          video.srcObject = stream
+            
+          video.onloadedmetadata = (ev) => video.play()
+            
+          }).catch((err)=>console.log(err))
+            
+        }
+      </script>
         
       <style type="text/css">
           .xyz {
@@ -56,7 +70,8 @@
           <div class="">
             <form>
               <div class="circle">
-                  <button type="button" class="btn btn-success btn-circle btn-xl">Registrar asistencia usando camara frontal</button> 
+                  <video src="" id="video"></video>
+                  <button type="button" class="btn btn-success btn-circle btn-xl" onclick="myFunction()">Registrar asistencia usando camara frontal</button> 
               </div>
   
                 <div class="input_field checkbox_option">

@@ -27,13 +27,16 @@ class LoginModel:
         return data
 
     def create_usuario(self, cui, contrasenia): #crear usuario a traves de json    
-        
-        query ="""insert into login(cui, contrasenia) 
+        params = {
+            'cui' : cui,
+            'contrasenia' : contrasenia
+        }  
+        query = """insert into login(cui, contrasenia) 
             values (%(cui)s, %(contrasenia)s)"""    
-        cursor = self.mysql_pool.execute('INSERT INTO login (cui, contrasenia) VALUES (%s ,%s)',(cui,contrasenia), commit=True)   
+        cursor = self.mysql_pool.execute(query, params, commit=True)   
 
         data = {'cui': cui, 'contrasenia': contrasenia}
-        return render_template('singup.html')
+        return data
 
     def delete_usuario(self, cui):#borra usuario de la base de datos  
         params = {'cui' : cui}      
