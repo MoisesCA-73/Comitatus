@@ -6,7 +6,7 @@ dbconfig = {
     "host":"127.0.0.1",
     "port":"3306",
     "user":"root",
-    "password":"ilusion1234",#Aqui cada uno coloque su contraseña 
+    "password":"moises123",#Aqui cada uno coloque su contraseña 
     "database":"t.inter",
 }
 
