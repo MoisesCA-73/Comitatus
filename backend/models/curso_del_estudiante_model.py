@@ -6,7 +6,7 @@ class CursoDelEstudianteModel:
 
     def get_curso_del_estudiante(self, cui):    
         params = {'cui' : cui}      
-        rv = self.mysql_pool.execute("SELECT * from curso del estudiante where cui=%(cui)s", params)
+        rv = self.mysql_pool.execute("SELECT * from `curso del estudiante` where cui=%(cui)s", params)
         data = []
         content = {}
         for result in rv:
@@ -34,7 +34,7 @@ class CursoDelEstudianteModel:
             'curso4' : curso4,
             'curso5' : curso5,
         }  
-        query = """insert into curso del estudiante (cui, curso1, curso2, curso3, curso4, curso5) 
+        query = """insert into `curso del estudiante` (cui, curso1, curso2, curso3, curso4, curso5) 
             values (%(cui)s, %(curso1)s, %(curso2)s, %(curso3)s, %(curso4)s, %(curso5)s)"""    
         cursor = self.mysql_pool.execute(query, params, commit=True)   
 
@@ -43,7 +43,7 @@ class CursoDelEstudianteModel:
 
     def delete_curso_del_estudiante(self, cui):    
         params = {'cui' : cui}      
-        query = """delete from curso del estudiante where cui = %(cui)s"""    
+        query = """delete from `curso del estudiante` where cui = %(cui)s"""    
         self.mysql_pool.execute(query, params, commit=True)   
 
         data = {'result': 1}

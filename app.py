@@ -78,6 +78,7 @@ def Index():
             n += 1
         session.pop('user_id', None)
         cui = request.form['cui']
+        print(cui)
         contrasenia = request.form['contrasenia']
         user = [x for x in users if x.cui == cui][0]
         if user and user.contrasenia == contrasenia:
@@ -102,9 +103,30 @@ def SignUp():
         nombres = request.form['nombres']
         apellidos = request.form['apellidos']
         correo = request.form['email']
+        escuela = request.form['escuela']
+
+        curso1 = ''
+        curso2 = ''
+        curso3 = ''
+        curso4 = ''
+        curso5 = ''
+
+        if escuela == "Ciencia de la Computacion":
+            curso1 = 'Arquitectura de Computadores'
+            curso2 = 'Ciencia de la Computacion II'
+            curso3 = 'Trabajo Interdisciplinar I'
+            curso4 = 'Calculo en Varias Variab;es'
+            curso5 = 'Desarrollo Basado en Plataformas'
+        else:
+            curso1 = 'Materiales'
+            curso2 = 'Dibujo Arquitectonico'
+            curso3 = 'Taller de diseno'
+            curso4 = 'Teoria de la arquitectura'
+            curso5 = 'Historia de la Arquitectura'
 
         modelUser.create_usuarios(cui,nombres,apellidos,"Ciencia de la Computacion",correo,"imagen01.png")
         modelLogin.create_usuario(cui,contrasenia)
+        modelCourse.create_curso_del_estudiante(cui,curso1,curso2,curso3,curso4,curso5)
 
         return redirect(url_for('Index'))
 
