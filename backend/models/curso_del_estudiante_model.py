@@ -16,7 +16,7 @@ class CursoDelEstudianteModel:
         return data
 
     def get_all_curso_del_estudiante(self):  
-        rv = self.mysql_pool.execute("SELECT * from curso del estudiante")  
+        rv = self.mysql_pool.execute("SELECT * from `curso del estudiante` order by cui")  
         data = []
         content = {}
         for result in rv:

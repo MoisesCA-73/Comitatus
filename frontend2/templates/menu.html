@@ -45,12 +45,11 @@
     <div class="col-sm-8">
       <h2>Tus Cursos</h2>
       <select name="cursos">
-        <option value="1">Desarrollo Basado en Plataformas</option> 
-        <option value="2">Trabajo Interdisciplinar</option> 
-        <option value="3">Calculo en Varias Variables</option>
-        <option value="10">Ciencia de la Computacion II</option> 
-        <option value="11">Arquitectura de Computadores</option> 
-        <option value="12">Ingles Tecnico profesional</option> 
+        <option value="1">{{g.user.cursos[0]}}</option> 
+        <option value="2">{{g.user.cursos[1]}}</option> 
+        <option value="3">{{g.user.cursos[2]}}</option>
+        <option value="4">{{g.user.cursos[3]}}</option> 
+        <option value="5">{{g.user.cursos[4]}}</option> 
      </select>
       <br><br>
       <h2>Fecha</h2>
@@ -64,16 +63,24 @@
      <h2>Tus clases</h2>
      <table class="table">
         <tr>
-          <td>Trabajo Interdisciplinar</td>
-          <td>Registrar</td>
+          <td>{{g.user.cursos[0]}}</td>
+          <td><a href="/register">Registrar</a></td>
         </tr>
         <tr>
-          <td>Calculo en Varias Variables</td>
-          <td>Registrar</td>
+          <td>{{g.user.cursos[1]}}</td>
+          <td><a href="/register">Registrar</a></td>
         </tr>
         <tr>
-          <td>Arquitectura de Computadores</td>
-          <td>Registrar</td>
+          <td>{{g.user.cursos[2]}}</td>
+          <td><a href="/register">Registrar</a></td>
+        </tr>
+        <tr>
+          <td>{{g.user.cursos[3]}}</td>
+          <td><a href="/register">Registrar</a></td>
+        </tr>
+        <tr>
+          <td>{{g.user.cursos[2]}}</td>
+          <td><a href="/register">Registrar</a></td>
         </tr>
       </table>
       
